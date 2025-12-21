@@ -1,4 +1,4 @@
-# 📄 Project Specification
+# Project Specification
 
 **Project Name:** Deterministic Simulation Core  
 **Document Type:** Product & Technical Requirements Specification (PTRS)
