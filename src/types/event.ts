@@ -1,3 +1,4 @@
+import type { Components } from "./component";
 import type { MovePayload } from "./input-event";
 import type { Tick } from "./tick";
 
@@ -35,7 +36,7 @@ export type HealthPayload = EntityId & {
  * Payload for spawn events, including the entity ID and its initial position.
  **/
 export type SpawnPayload = EntityId & {
-    position: { x: number, y: number }
+    components: Components
 }
 
 /**
@@ -61,6 +62,11 @@ export const spawnEvent: Event = {
     tick: 0,
     payload: {
         entityId: "player-1",
-        position: { x: 10, y: 10 }
+        components: {
+            inventory: ["sword", "motolov cocktail", "bondage"],
+            health: { max: 100, current: 100 },
+            position: { x: 20, y: 20 },
+            buffs: [{ name: "speed", duration: 5 }]
+        }
     }
 }

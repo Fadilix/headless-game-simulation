@@ -6,7 +6,7 @@ export type Components = Record<string, ComponentValue>
 /**
  * The value of a component, which can be a primitive type, an array, or a nested object.
  **/
-export type ComponentValue =
+type ComponentValue =
     | string
     | number
     | null
