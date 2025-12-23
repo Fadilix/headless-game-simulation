@@ -36,9 +36,15 @@ bun ./index.ts
 bun test
 ```
 
+```bash
+# Run tests with converage
+bun test --coverage
+```
+
 ## Why This Matters
 
 This architecture enables:
+
 - **Networked Games**: Server and clients stay in sync
 - **Replays**: Record and playback gameplay exactly
 - **Time Travel Debugging**: Step through game state at any tick
