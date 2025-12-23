@@ -20,11 +20,11 @@ A headless, deterministic game simulation engine built in TypeScript. This proje
 
 ## Key Features
 
-✅ **Deterministic RNG**: Linear congruential generator with seed management  
-✅ **Event Scheduling**: Schedule events for future ticks  
-✅ **Event Recording & Replay**: Record gameplay for replays  
-✅ **Complete Test Coverage**: Unit and integration tests verify determinism  
-✅ **JSON Serialization**: Save/load entire game state  
+**Deterministic RNG**: Linear congruential generator with seed management  
+**Event Scheduling**: Schedule events for future ticks  
+**Event Recording & Replay**: Record gameplay for replays  
+**Complete Test Coverage**: Unit and integration tests verify determinism  
+**JSON Serialization**: Save/load entire game state  
 
 ## Running the Project
 
