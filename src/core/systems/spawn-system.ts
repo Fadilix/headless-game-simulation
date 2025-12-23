@@ -1,3 +1,4 @@
+import { logger } from "../../logger/game-logger";
 import type { GameState, SpawnPayload } from "../../types";
 
 export const SpawnSystem = (state: GameState): GameState => {
@@ -10,15 +11,21 @@ export const SpawnSystem = (state: GameState): GameState => {
     );
 
     for (const event of events) {
+        logger.log("Spawn event started");
         const { entityId, components } = event.payload as SpawnPayload;
 
         // not overriding existing entities
-        if (newEntities[entityId]) continue;
+        if (newEntities[entityId]) {
+            logger.warn(`Entity with id ${entityId} already exists, skipping spawn`);
+            continue;
+        }
 
         newEntities[entityId] = {
             id: entityId,
             components: { ...components }
         };
+
+        logger.log(`Entity spawned: ${JSON.stringify({ entityId, components }, null, 2)}`);
     }
 
     return { ...state, entities: newEntities };

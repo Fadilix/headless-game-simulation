@@ -1,4 +1,5 @@
-import { random } from "../rng/linear-congruential-generator";
+import { random } from "../rng/linear-congruential-generator.ts";
+
 import {
     type GameState,
 } from "../types";
@@ -17,8 +18,10 @@ export const tick = (state: GameState) => {
     next = MovementSystem(next);
     next = HealthSystem(next);
 
-    if (rand < 0.1) {
+    if (rand < 0.05) {
         console.log(`Tick ${state.tick} - RNG: ${rand.toFixed(4)} loot dropped`);
+    } else {
+        console.log(`Tick ${state.tick} - RNG: ${rand.toFixed(4)} no loot`);
     }
 
     return {
@@ -26,4 +29,5 @@ export const tick = (state: GameState) => {
         tick: next.tick + 1,
         rngSeed: nextSeed
     };
+
 }
