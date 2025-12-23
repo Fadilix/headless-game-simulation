@@ -13,13 +13,23 @@ export interface EntityId {
 }
 
 /**
+ * Base structure for events, parameterized by event type and payload.
+ **/
+interface BaseEvent<T extends EventType, P> {
+    type: T;
+    tick: Tick;
+    payload: P;
+    cancelled?: boolean;
+}
+
+/**
  * Represents an event in the game, including its type, the tick it occurs on, and its payload.
  **/
 export type Event =
-    | { type: "HEALTH"; tick: Tick; payload: HealthPayload }
-    | { type: "MOVE"; tick: Tick; payload: MovePayload }
-    | { type: "DAMAGE"; tick: Tick; payload: DamagePayload }
-    | { type: "SPAWN"; tick: Tick; payload: SpawnPayload };
+    | BaseEvent<"HEALTH", HealthPayload>
+    | BaseEvent<"MOVE", MovePayload>
+    | BaseEvent<"DAMAGE", DamagePayload>
+    | BaseEvent<"SPAWN", SpawnPayload>;
 
 /**
  * Payload for health-related events, including current and maximum health values.

@@ -1,8 +1,12 @@
 import { tick } from "./src/core/tick";
+import { deserializeState, serializeState } from "./src/serializers/serialize";
 import { gameState } from "./src/types";
 
-let state = gameState;
+const state = serializeState(gameState);
+
+let restored = deserializeState(state);
+
 
 setInterval(() => {
-  state = tick(state);
+  restored = tick(restored);
 }, 1000 / 60);

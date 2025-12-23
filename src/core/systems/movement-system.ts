@@ -9,7 +9,9 @@ export const MovementSystem = (state: GameState): GameState => {
     const newEntities = { ...state.entities };
 
     const events = state.inputEvents.filter(
-        e => e.type === "MOVE" && e.tick === state.tick
+        e => e.type === "MOVE"
+            && e.tick === state.tick
+            && !e.cancelled
     );
 
     for (const event of events) {

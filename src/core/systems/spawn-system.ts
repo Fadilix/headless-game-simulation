@@ -4,7 +4,9 @@ export const SpawnSystem = (state: GameState): GameState => {
     const newEntities = { ...state.entities };
 
     const events = state.scheduledEvents.filter(
-        e => e.type === "SPAWN" && e.tick === state.tick
+        e => e.type === "SPAWN"
+            && e.tick === state.tick
+            && !e.cancelled
     );
 
     for (const event of events) {
