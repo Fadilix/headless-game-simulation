@@ -6,7 +6,12 @@ describe("Testing damage system", () => {
     let state: GameState;
 
     beforeEach(() => {
-        state = { ...gameState, tick: 55 };
+        state = { 
+            ...gameState, 
+            tick: 55,
+            scheduledEvents: [...gameState.scheduledEvents],
+            inputEvents: [...gameState.inputEvents]
+        };
     });
 
     test("Testing damage", () => {
@@ -16,6 +21,7 @@ describe("Testing damage system", () => {
     });
 
     test("Testing damage with non-existent entity", () => {
+        state.scheduledEvents = []; // Clear pre-scheduled events
         state.scheduledEvents.push({
             type: "DAMAGE",
             tick: 55,
@@ -52,6 +58,7 @@ describe("Testing damage system", () => {
     test("Testing cancelled damage event is ignored", () => {
         const originalHealth = (state.entities["boss-1"]?.components.health as { current: number; max: number }).current;
 
+        state.scheduledEvents = []; // Clear pre-scheduled events
         state.scheduledEvents.push({
             type: "DAMAGE",
             tick: 55,

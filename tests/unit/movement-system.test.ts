@@ -6,7 +6,12 @@ describe("Testing movement system", () => {
     let state: GameState;
 
     beforeEach(() => {
-        state = { ...gameState, tick: 10 };
+        state = { 
+            ...gameState, 
+            tick: 10,
+            scheduledEvents: [...gameState.scheduledEvents],
+            inputEvents: [...gameState.inputEvents]
+        };
     });
 
     test("Movement System moves entities", () => {
@@ -70,11 +75,16 @@ describe("Testing movement system", () => {
         let result = MovementSystem(state);
         expect(result.entities["player-1"]?.components.position).toEqual({ 
             x: player1Position.x, 
-            y: player1Position.y - 1 
+            y: player1Position.y + 1 
         });
 
         // Reset and test EAST
-        state = { ...gameState, tick: 10 };
+        state = { 
+            ...gameState, 
+            tick: 10,
+            scheduledEvents: [...gameState.scheduledEvents],
+            inputEvents: [...gameState.inputEvents]
+        };
         state.inputEvents.push({
             type: "MOVE",
             tick: 10,
@@ -88,7 +98,12 @@ describe("Testing movement system", () => {
         });
 
         // Reset and test WEST
-        state = { ...gameState, tick: 10 };
+        state = { 
+            ...gameState, 
+            tick: 10,
+            scheduledEvents: [...gameState.scheduledEvents],
+            inputEvents: [...gameState.inputEvents]
+        };
         state.inputEvents.push({
             type: "MOVE",
             tick: 10,

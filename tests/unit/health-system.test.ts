@@ -6,7 +6,12 @@ describe("Testing health system", () => {
     let state: GameState;
 
     beforeEach(() => {
-        state = { ...gameState, tick: 10 };
+        state = { 
+            ...gameState, 
+            tick: 10,
+            scheduledEvents: [...gameState.scheduledEvents],
+            inputEvents: [...gameState.inputEvents]
+        };
     });
 
     test("Health system heals entity", () => {

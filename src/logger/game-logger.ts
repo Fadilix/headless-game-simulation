@@ -12,7 +12,8 @@ export class GameLogger {
     private logCount;
     private enabled = true;
 
-    constructor() {
+    constructor(enabled: boolean = true) {
+        this.enabled = enabled;
         this.logs = [];
         this.logCount = 0;
     }
@@ -44,5 +45,5 @@ export class GameLogger {
     }
 }
 
-export const logger = new GameLogger();
+export const logger = new GameLogger(false);
 logger.log("hello world");
