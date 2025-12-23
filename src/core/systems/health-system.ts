@@ -3,7 +3,7 @@ import { recordEvent } from "../../queries/event-queries";
 import type { GameState, HealthPayload } from "../../types";
 
 /**
- * DamageSystem processes DAMAGE events to reduce the health of entities.
+ * HealthSystem processes HEALTH events to reduce the health of entities.
  */
 export const HealthSystem = (state: GameState): GameState => {
     let gameState = { ...state };

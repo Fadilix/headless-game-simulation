@@ -40,6 +40,12 @@ export const damageBossEvent: GameEvent = {
 
 export const massiveDamageBossEvent: GameEvent = {
     type: "DAMAGE",
+    tick: 67,
+    payload: { entityId: "boss-7", health: { current: -150, max: 500 } } as DamagePayload
+}
+
+export const doesNotExistEntityDamageEvent: GameEvent = {
+    type: "DAMAGE",
     tick: 60,
     payload: { entityId: "boss-1", health: { current: -150, max: 500 } } as DamagePayload
 }

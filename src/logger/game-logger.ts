@@ -1,7 +1,5 @@
 type Level = "INFO" | "WARN" | "ERROR"
 
-
-
 export class GameLogger {
     private logs: string[];
     private readonly colors = {

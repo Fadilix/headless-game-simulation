@@ -43,7 +43,7 @@ export const DamageSystem = (state: GameState): GameState => {
                 ...oldHealth,
                 current: newHealth
             },
-            damageAmount: health.current
+           damageAmount: health.current
         };
         logger.log(`Entity with id ${entityId} took damage: ${JSON.stringify(damageUpdate, null, 2)}`);
     }

@@ -1,4 +1,3 @@
-import { gameState } from "../../data";
 import { logger } from "../../logger/game-logger";
 import { recordEvent } from "../../queries/event-queries";
 import { directionPath, type GameState, type MovePayload } from "../../types";
