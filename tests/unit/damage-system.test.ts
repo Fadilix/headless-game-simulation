@@ -21,16 +21,18 @@ describe("Testing damage system", () => {
     });
 
     test("Testing damage with non-existent entity", () => {
-        state.scheduledEvents = []; // Clear pre-scheduled events
-        state.scheduledEvents.push({
-            type: "DAMAGE",
-            tick: 55,
-            cancelled: false,
-            payload: {
-                entityId: "non-existent-entity",
-                health: { current: -50, max: 100 }
-            }
-        });
+        state = {
+            ...state,
+            scheduledEvents: [{
+                type: "DAMAGE",
+                tick: 55,
+                cancelled: false,
+                payload: {
+                    entityId: "non-existent-entity",
+                    health: { current: -50, max: 100 }
+                }
+            }]
+        };
 
         const result = DamageSystem(state);
 
@@ -58,16 +60,18 @@ describe("Testing damage system", () => {
     test("Testing cancelled damage event is ignored", () => {
         const originalHealth = (state.entities["boss-1"]?.components.health as { current: number; max: number }).current;
 
-        state.scheduledEvents = []; // Clear pre-scheduled events
-        state.scheduledEvents.push({
-            type: "DAMAGE",
-            tick: 55,
-            cancelled: true,
-            payload: {
-                entityId: "boss-1",
-                health: { current: -100, max: 500 }
-            }
-        });
+        state = {
+            ...state,
+            scheduledEvents: [{
+                type: "DAMAGE",
+                tick: 55,
+                cancelled: true,
+                payload: {
+                    entityId: "boss-1",
+                    health: { current: -100, max: 500 }
+                }
+            }]
+        };
 
         const result = DamageSystem(state);
         const finalBossHealth = result.entities["boss-1"]?.components.health as { current: number; max: number };
