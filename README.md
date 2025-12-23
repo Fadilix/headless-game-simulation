@@ -1,4 +1,4 @@
-# Deterministic Simulation Core
+# Headless Game Simulation
 
 A headless, deterministic game simulation engine built in TypeScript. This project demonstrates how to build a reliable, testable core for games and simulations without any UI dependencies.
 
