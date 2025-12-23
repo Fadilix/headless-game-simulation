@@ -1,7 +1,7 @@
-import { SpawnSystem } from "../src/core/systems/spawn-system";
-import { gameState, type Event, type GameState } from "../src/types";
+import { SpawnSystem } from "../../src/core/systems/spawn-system";
+import { gameState, type Event, type GameState } from "../../src/types";
 
-test("spawn new enemy at tick 5", () => {
+test("Spawn System", () => {
     const spawnEvent : Event = {
         type: "SPAWN",
         tick: 5,

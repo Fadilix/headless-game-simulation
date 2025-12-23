@@ -1,10 +1,10 @@
 import type { GameState, HealthPayload } from "../../types";
 
-export const HealthSystem = (state: GameState): GameState => {
+export const DamageSystem = (state: GameState): GameState => {
     const newEntities = { ...state.entities };
 
     const events = state.scheduledEvents.filter(
-        e => e.type === "HEALTH" && e.tick === state.tick
+        e => e.type === "DAMAGE" && e.tick === state.tick
     );
 
     for (const event of events) {
@@ -21,7 +21,7 @@ export const HealthSystem = (state: GameState): GameState => {
                 ...entity.components,
                 health: {
                     ...oldHealth,
-                    current: Math.min(100, oldHealth.current + health.current)
+                    current: Math.max(0, oldHealth.current + health.current)
                 }
             }
         };

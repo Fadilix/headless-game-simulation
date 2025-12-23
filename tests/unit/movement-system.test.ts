@@ -1,5 +1,5 @@
-import { MovementSystem } from "../src/core/systems/movement-system"
-import { gameState, type GameState } from "../src/types"
+import { MovementSystem } from "../../src/core/systems/movement-system"
+import { gameState, type GameState } from "../../src/types"
 
 let state: GameState = gameState;
 
