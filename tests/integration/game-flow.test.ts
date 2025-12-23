@@ -1,5 +1,6 @@
 import { DamageSystem, HealthSystem, MovementSystem, SpawnSystem } from "../../src/core/systems";
-import { gameState, type GameState } from "../../src/types";
+import { gameState } from "../../src/data";
+import { type GameState } from "../../src/types";
 
 test("Complete game tick integration - all systems working together", () => {
     // Setup a complete game tick with multiple events happening simultaneously

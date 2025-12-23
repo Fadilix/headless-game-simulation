@@ -2,9 +2,7 @@ import { logger } from "../../logger/game-logger";
 import { directionPath, type GameState, type MovePayload } from "../../types";
 
 /**
- * handles all the movements in our system 
- * @param state 
- * @returns 
+ * MovementSystem processes MOVE input events to update the position of entities.
  */
 export const MovementSystem = (state: GameState): GameState => {
     const newEntities = { ...state.entities };

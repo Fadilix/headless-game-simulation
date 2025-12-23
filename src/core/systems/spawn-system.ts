@@ -1,6 +1,9 @@
 import { logger } from "../../logger/game-logger";
 import type { GameState, SpawnPayload } from "../../types";
 
+/**
+ * SpawnSystem processes SPAWN events to add new entities to the game state.
+ */
 export const SpawnSystem = (state: GameState): GameState => {
     const newEntities = { ...state.entities };
 

@@ -1,6 +1,9 @@
 import { logger } from "../../logger/game-logger";
 import type { GameState, HealthPayload } from "../../types";
 
+/**
+ * DamageSystem processes DAMAGE events to reduce the health of entities.
+ */
 export const HealthSystem = (state: GameState): GameState => {
     const newEntities = { ...state.entities };
 

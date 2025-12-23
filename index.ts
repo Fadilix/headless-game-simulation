@@ -6,7 +6,6 @@ const state = serializeState(gameState);
 
 let restored = deserializeState(state);
 
-
 setInterval(() => {
   restored = tick(restored);
 }, 1000 / 60);
