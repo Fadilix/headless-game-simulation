@@ -90,9 +90,9 @@ The system must be suitable as the authoritative core for:
 
 ### 4.7 Serialization
 
-- [ ] **FR-21:** The system shall support serializing the complete simulation state.
-- [ ] **FR-22:** The system shall support restoring the simulation from a serialized state.
-- [ ] **FR-23:** Restored simulations shall continue deterministically.
+- [x] **FR-21:** The system shall support serializing the complete simulation state.
+- [x] **FR-22:** The system shall support restoring the simulation from a serialized state.
+- [x] **FR-23:** Restored simulations shall continue deterministically.
 
 ### 4.8 Replay System
 

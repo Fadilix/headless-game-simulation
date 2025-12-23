@@ -1,3 +1,4 @@
+import { filterEvents } from "../queries/event-queries.ts";
 import { random } from "../rng/linear-congruential-generator.ts";
 
 import {
@@ -17,6 +18,7 @@ export const tick = (state: GameState) => {
     next = SpawnSystem(next);
     next = MovementSystem(next);
     next = HealthSystem(next);
+    next = filterEvents(next);
 
     if (rand < 0.05) {
         console.log(`Tick ${state.tick} - RNG: ${rand.toFixed(4)} loot dropped`);

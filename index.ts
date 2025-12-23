@@ -6,6 +6,10 @@ const state = serializeState(gameState);
 
 let restored = deserializeState(state);
 
-setInterval(() => {
+const interval = setInterval(() => {
   restored = tick(restored);
+
+  if (restored.tick >= 65) {
+    clearInterval(interval);
+  }
 }, 1000 / 60);
