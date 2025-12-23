@@ -30,7 +30,8 @@ export const gameState: GameState = {
         "enemy-1": enemy,
         "enemy-2": enemy2,
         "enemy-3": weakEnemy,
-        "npc-1": npc
+        "npc-1": npc,
+        "boss-1": boss
     },
     scheduledEvents: [
         spawnNPCEvent,
