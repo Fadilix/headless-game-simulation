@@ -57,4 +57,5 @@ export const gameState: GameState = {
         damagePlayer1Event
     ],
     rngSeed: 12345,
+    recordedEvents: []
 }

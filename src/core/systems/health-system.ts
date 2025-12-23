@@ -1,11 +1,13 @@
 import { logger } from "../../logger/game-logger";
+import { recordEvent } from "../../queries/event-queries";
 import type { GameState, HealthPayload } from "../../types";
 
 /**
  * DamageSystem processes DAMAGE events to reduce the health of entities.
  */
 export const HealthSystem = (state: GameState): GameState => {
-    const newEntities = { ...state.entities };
+    let gameState = { ...state };
+    let newEntities = { ...gameState.entities };
 
     const events = state.scheduledEvents.filter(
         e => e.type === "HEALTH"
@@ -43,8 +45,11 @@ export const HealthSystem = (state: GameState): GameState => {
                 current: newHealth
             }
         }
+        gameState = recordEvent(gameState, event);
+        logger.log(`Event recorded: ${JSON.stringify(event, null, 2)}`);
+
         logger.log(`Entity with id ${entityId} updated health: ${JSON.stringify(healthUpdate, null, 2)}`)
     }
 
-    return { ...state, entities: newEntities };
+    return { ...gameState, entities: newEntities };
 }

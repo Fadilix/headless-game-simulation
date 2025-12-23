@@ -1,11 +1,14 @@
+import { gameState } from "../../data";
 import { logger } from "../../logger/game-logger";
+import { recordEvent } from "../../queries/event-queries";
 import { directionPath, type GameState, type MovePayload } from "../../types";
 
 /**
  * MovementSystem processes MOVE input events to update the position of entities.
  */
 export const MovementSystem = (state: GameState): GameState => {
-    const newEntities = { ...state.entities };
+    let gameState = { ...state };
+    const newEntities = { ...gameState.entities };
 
     const events = state.inputEvents.filter(
         e => e.type === "MOVE"
@@ -38,9 +41,10 @@ export const MovementSystem = (state: GameState): GameState => {
                 position: newPosition
             }
         };
-
+        gameState = recordEvent(gameState, event);
+        logger.log(`Event recorded: ${JSON.stringify(event, null, 2)}`);
         logger.log(`Entity with id ${entityId} moved to: ${JSON.stringify({ position: newPosition, direction }, null, 2)}`);
     }
 
-    return { ...state, entities: newEntities };
+    return { ...gameState, entities: newEntities };
 }

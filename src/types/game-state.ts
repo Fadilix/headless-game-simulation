@@ -1,6 +1,6 @@
 import { maxHealthEvent, moveEvent } from "../data";
 import { type Entity } from "./entity";
-import type { GameEvent } from "./event";
+import type { GameEvent, RecordedEvent } from "./event";
 import type { Tick } from "./tick";
 
 /**
@@ -12,4 +12,5 @@ export interface GameState {
     readonly scheduledEvents: GameEvent[];
     readonly inputEvents: GameEvent[];
     readonly rngSeed: number;
+    readonly recordedEvents: RecordedEvent[];
 }

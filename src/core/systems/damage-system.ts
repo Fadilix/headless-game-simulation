@@ -5,7 +5,8 @@ import type { GameState, HealthPayload } from "../../types";
  * DamageSystem processes DAMAGE events to reduce the health of entities.
  */
 export const DamageSystem = (state: GameState): GameState => {
-    const newEntities = { ...state.entities };
+    let gameState = { ...state };
+    const newEntities = { ...gameState.entities };
 
     const events = state.scheduledEvents.filter(
         e => e.type === "DAMAGE"
@@ -47,5 +48,5 @@ export const DamageSystem = (state: GameState): GameState => {
         logger.log(`Entity with id ${entityId} took damage: ${JSON.stringify(damageUpdate, null, 2)}`);
     }
 
-    return { ...state, entities: newEntities };
+    return { ...gameState, entities: newEntities };
 }

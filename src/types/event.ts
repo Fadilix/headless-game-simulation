@@ -31,6 +31,11 @@ export type GameEvent =
     | BaseEvent<"DAMAGE", DamagePayload>
     | BaseEvent<"SPAWN", SpawnPayload>;
 
+export interface RecordedEvent {
+    tick: Tick;
+    event: GameEvent;
+}
+
 /**
  * Payload for health-related events, including current and maximum health values.
  **/

@@ -1,4 +1,4 @@
-import type { GameState } from "../types";
+import type { GameEvent, GameState } from "../types";
 
 export const filterEvents = (state: GameState): GameState => {
     let gameState = { ...state };
@@ -14,4 +14,13 @@ export const filterEvents = (state: GameState): GameState => {
     };
 
     return gameState;
+}
+
+export const recordEvent = (state: GameState, event: GameEvent): GameState => {
+    const newRecordedEvents = [...state.recordedEvents, { tick: state.tick, event }];
+
+    return {
+        ...state,
+        recordedEvents: newRecordedEvents
+    };
 }

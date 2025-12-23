@@ -1,11 +1,13 @@
 import { logger } from "../../logger/game-logger";
+import { recordEvent } from "../../queries/event-queries";
 import type { GameState, SpawnPayload } from "../../types";
 
 /**
  * SpawnSystem processes SPAWN events to add new entities to the game state.
  */
 export const SpawnSystem = (state: GameState): GameState => {
-    const newEntities = { ...state.entities };
+    let gameState = { ...state };
+    const newEntities = { ...gameState.entities };
 
     const events = state.scheduledEvents.filter(
         e => e.type === "SPAWN"
@@ -28,8 +30,10 @@ export const SpawnSystem = (state: GameState): GameState => {
             components: { ...components }
         };
 
+        gameState = recordEvent(gameState, event);
+        logger.log(`Event recorded: ${JSON.stringify(event, null, 2)}`);
         logger.log(`Entity spawned: ${JSON.stringify({ entityId, components }, null, 2)}`);
     }
 
-    return { ...state, entities: newEntities };
+    return { ...gameState, entities: newEntities };
 }
