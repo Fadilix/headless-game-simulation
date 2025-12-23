@@ -1,7 +1,6 @@
 import { SpawnSystem } from "../src/core/systems/spawn-system";
 import { gameState, type Event, type GameState } from "../src/types";
 
-
 test("spawn new enemy at tick 5", () => {
     const spawnEvent : Event = {
         type: "SPAWN",
@@ -11,6 +10,7 @@ test("spawn new enemy at tick 5", () => {
             components: { position: { x: 10, y: 10 }, health: { current: 50, max: 50 } },
         },
     };
+
     const state : GameState = {
         ...gameState,
         tick: 5,
