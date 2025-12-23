@@ -1,5 +1,6 @@
 import { HealthSystem } from "../../src/core/systems/health-system";
-import { gameState, type GameState } from "../../src/types"
+import { gameState } from "../../src/data";
+import { type GameState } from "../../src/types"
 
 test("Health system", () => {
     let state: GameState = {

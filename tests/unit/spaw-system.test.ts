@@ -1,8 +1,10 @@
 import { SpawnSystem } from "../../src/core/systems/spawn-system";
-import { gameState, type Event, type GameState } from "../../src/types";
+import { gameState } from "../../src/data";
+import { type GameEvent, type GameState } from "../../src/types";
+
 
 test("Spawn System", () => {
-    const spawnEvent : Event = {
+    const spawnEvent : GameEvent = {
         type: "SPAWN",
         tick: 5,
         payload: {

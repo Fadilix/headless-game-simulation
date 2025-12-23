@@ -25,7 +25,7 @@ interface BaseEvent<T extends EventType, P> {
 /**
  * Represents an event in the game, including its type, the tick it occurs on, and its payload.
  **/
-export type Event =
+export type GameEvent =
     | BaseEvent<"HEALTH", HealthPayload>
     | BaseEvent<"MOVE", MovePayload>
     | BaseEvent<"DAMAGE", DamagePayload>
@@ -53,30 +53,3 @@ export type SpawnPayload = EntityId & {
  * Payload for damage-related events, similar to health payloads.
  **/
 export type DamagePayload = HealthPayload;
-
-
-export const maxHealthEvent: Event = {
-    type: "HEALTH",
-    tick: 47,
-    payload: { entityId: "player-1", health: { current: 100, max: 100 } } as HealthPayload
-}
-
-export const damageEvent: Event = {
-    type: "DAMAGE",
-    tick: 40,
-    payload: { entityId: "enemy-1", health: { current: -10, max: 100 } } as DamagePayload
-}
-
-export const spawnEvent: Event = {
-    type: "SPAWN",
-    tick: 0,
-    payload: {
-        entityId: "player-1",
-        components: {
-            inventory: ["sword", "motolov cocktail", "bondage"],
-            health: { max: 100, current: 100 },
-            position: { x: 20, y: 20 },
-            buffs: [{ name: "speed", duration: 5 }]
-        }
-    }
-}

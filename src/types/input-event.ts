@@ -1,12 +1,15 @@
-import type { Event } from "./event";
+import type { GameEvent } from "./event";
 
-export type InputEvent = Event;
+/* General input event type */
+export type InputEvent = GameEvent;
 
+/* Specific input event for moving an entity */
 export interface MovePayload {
     entityId: string;
     direction: "NORTH" | "SOUTH" | "EAST" | "WEST";
 }
 
+/* Mapping of directions to their corresponding coordinate changes */
 export const directionPath = {
     "NORTH": { x: 0, y: 1 },
     "SOUTH": { x: 0, y: -1 },
@@ -14,9 +17,3 @@ export const directionPath = {
     "WEST": { x: -1, y: 0 },
 } as const;
 
-
-export const moveEvent: InputEvent = {
-    type: "MOVE",
-    tick: 1,
-    payload: { entityId: "player-1", direction: "NORTH" } as MovePayload
-};

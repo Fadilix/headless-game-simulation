@@ -1,6 +1,6 @@
-import { enemy, player, type Entity } from "./entity";
-import { maxHealthEvent, type Event } from "./event";
-import { moveEvent } from "./input-event";
+import { maxHealthEvent, moveEvent } from "../data";
+import { type Entity } from "./entity";
+import type { GameEvent } from "./event";
 import type { Tick } from "./tick";
 
 /**
@@ -9,15 +9,7 @@ import type { Tick } from "./tick";
 export interface GameState {
     readonly tick: Tick;
     readonly entities: Record<string, Entity>;
-    readonly scheduledEvents: Event[];
-    readonly inputEvents: Event[];
+    readonly scheduledEvents: GameEvent[];
+    readonly inputEvents: GameEvent[];
     readonly rngSeed: number;
-}
-
-export const gameState: GameState = {
-    tick: 10,
-    entities: { "player-1": player, "enemy-1": enemy },
-    scheduledEvents: [maxHealthEvent],
-    inputEvents: [moveEvent],
-    rngSeed: 12345,
 }
