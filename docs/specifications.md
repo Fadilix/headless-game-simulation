@@ -96,9 +96,9 @@ The system must be suitable as the authoritative core for:
 
 ### 4.8 Replay System
 
-- [ ] **FR-24:** The system shall support recording all input events.
-- [ ] **FR-25:** The system shall support replaying recorded events.
-- [ ] **FR-26:** Replayed simulations shall produce identical results to the original run.
+- [x] **FR-24:** The system shall support recording all input events.
+- [x] **FR-25:** The system shall support replaying recorded events.
+- [x] **FR-26:** Replayed simulations shall produce identical results to the original run.
 
 ---
 
@@ -148,7 +148,7 @@ The project shall be considered complete when:
 
 - [x] Source code
 - [x] Unit tests
-- [ ] Determinism test suite
+- [x] Determinism test suite
 - [x] Documentation
 
 ---

@@ -24,3 +24,39 @@ export const recordEvent = (state: GameState, event: GameEvent): GameState => {
         recordedEvents: newRecordedEvents
     };
 }
+
+
+export const injectRecordedEvents = (state: GameState): GameState => {
+    let gameState = { ...state };
+    const newInputEvents = [...gameState.inputEvents];
+    const newScheduledEvents = [...gameState.scheduledEvents];
+
+    for (const recordedEvent of state.recordedEvents) {
+        if (recordedEvent.tick === state.tick) {
+            const event = recordedEvent.event;
+            if (event.type === "MOVE") {
+                newInputEvents.push(event);
+            } else {
+                newScheduledEvents.push(event);
+            }
+        }
+    }
+
+    gameState = {
+        ...gameState,
+        inputEvents: newInputEvents,
+        scheduledEvents: newScheduledEvents
+    };
+
+    return gameState;
+}
+
+
+export const replayEvents = (state: GameState): GameState => {
+    let gameState = { ...state };
+
+    gameState = injectRecordedEvents(gameState);
+    gameState = filterEvents(gameState);
+
+    return gameState;
+}
